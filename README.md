@@ -12,6 +12,8 @@ The pipeline consists of the following components:
 4. **AWS S3 Storage**: Stores processed data as Parquet files for long-term storage.
 5. **AWS SNS Alerting**: Sends alerts for errors and failures in the pipeline.
 
+![Architecture Diagram](./bosta-architecture.png)
+
 ## Technology Stack
 
 - **Apache Kafka (KRaft mode)**: Used for message streaming without requiring Zookeeper
@@ -26,33 +28,49 @@ The pipeline consists of the following components:
 ```
 .
 ├── .env                        # Environment variables
+├── .env.example                # Example environment variables
 ├── .github/                    # GitHub workflows and templates
 ├── Makefile                    # For automating setup and execution
 ├── README.md                   # This file
+├── bosta-architecture.png      # Architecture diagram
+├── config/                     # Configuration files
+│   └── clickhouse/             # ClickHouse configuration
+├── data/                       # Data storage directory
 ├── docker-compose.yml          # Docker Compose file for infrastructure
-├── pyproject.toml              # Python project configuration for UV
-├── scripts/                    # Shell scripts for running the pipeline
-├── src/                        # Source code
-│   ├── processor/              # Stream processor code
-│   │   ├── clickhouse_ingestion.py # Ingestion of data to ClickHouse
-│   │   └── processor.py        # QuixStreams processor
-│   ├── schema/                 # Schema definitions
-│   │   ├── clickhouse_tables.py # ClickHouse table creation
-│   │   └── models.py           # Pydantic models for data validation
-│   └── simulator/              # Data simulator
-│       └── simulator.py        # Kafka producer for simulated data
-└── topic_1.json                # Sample telemetry data
+├── logs/                       # Log files
+├── processor/                  # Core processing components
+│   ├── parsers/                # Data parsing logic
+│   ├── producers/              # Kafka producer implementations
+│   ├── storage/                # Storage adapters for ClickHouse/S3
+│   └── utils/                  # Utility functions
+├── schema/                     # Schema definitions
+│   ├── clickhouse_tables.py    # ClickHouse table creation
+│   └── models.py               # Pydantic models for data validation
+├── simulator/                  # Data simulator
+│   ├── README.md               # Simulator documentation
+│   ├── requirements.txt        # Simulator dependencies
+│   ├── src/                    # Simulator source code
+│   └── test_data.json          # Sample telemetry data
+└── streamprocessor/            # Stream processing components
+    ├── Dockerfile              # Dockerfile for the stream processor
+    ├── README.md               # Stream processor documentation
+    ├── alerts.py               # Alert handling
+    ├── common.py               # Common utilities
+    ├── parser.py               # Data parsing
+    ├── processor.py            # Main stream processor
+    ├── requirements.txt        # Stream processor dependencies
+    └── s3_exporter.py          # S3 export functionality
 ```
 
 ## Prerequisites
 
 - Docker and Docker Compose
 - Python 3.9+
-- UV package manager
+- Recommended: UV package manager for Python dependency management
 
 ## Setup
 
-1. **Install UV**:
+1. **Install UV (Recommended)**:
 
    Follow the [official UV installation guide](https://github.com/astral-sh/uv).
 
@@ -120,59 +138,40 @@ make create-schemas
 make start-pipeline
 ```
 
-### Running Manually
+### Running Components Individually
 
-Use the provided shell script to start the complete pipeline:
+#### Simulator
 
 ```bash
-./scripts/run_pipeline.sh
+# Navigate to the simulator directory
+cd simulator
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the simulator
+python src/simulator.py
 ```
 
-This script will:
+#### Stream Processor
 
-1. Install dependencies using UV
-2. Start Kafka (in KRaft mode) and ClickHouse using Docker Compose
-3. Create necessary Kafka topics and ClickHouse tables
-4. Start the data simulator, stream processor, and ClickHouse ingestion components
+```bash
+# Navigate to the streamprocessor directory
+cd streamprocessor
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the processor
+python processor.py
+```
 
 ### Monitoring the Pipeline
 
 - **Kafka UI**: Open http://localhost:8080 in your browser to access the Kafka UI dashboard.
 - **ClickHouse Tabix**: Open http://localhost:8081 in your browser to access the ClickHouse Tabix UI.
 - **Container Logs**: Use `docker-compose logs -f` to view logs from all containers.
-- **Component Logs**: When using the Makefile, component logs are available in the `logs` directory.
-
-### Stopping the Pipeline
-
-When running with `make run`, press Ctrl+C in the terminal or run `make stop` from another terminal.
-
-When running with the shell script, press Ctrl+C in the terminal where the pipeline is running. The cleanup function will stop all components gracefully.
-
-## Running Individual Components
-
-### Data Simulator
-
-```bash
-python -m src.simulator.simulator
-```
-
-### Stream Processor
-
-```bash
-python -m src.processor.processor
-```
-
-### ClickHouse Ingestion
-
-```bash
-python -m src.processor.clickhouse_ingestion
-```
-
-### ClickHouse Table Setup
-
-```bash
-python -m src.schema.clickhouse_tables
-```
+- **Component Logs**: Component logs are available in the `logs` directory.
 
 ## Data Model
 
@@ -184,6 +183,8 @@ The pipeline processes network telemetry data into three main entities:
 
 ### ClickHouse Tables
 
+The schema for ClickHouse tables is defined in `schema/clickhouse_tables.py`. The main tables are:
+
 - `node_data`: Stores information about network nodes
 - `interface_data`: Stores information about network interfaces
 - `address_data`: Stores IP address information
@@ -193,13 +194,13 @@ The pipeline processes network telemetry data into three main entities:
 This project uses Logfire for logging. To configure Logfire:
 
 1. Create a Logfire account and obtain a token.
-2. Set the `LOGFIRE_TOKEN` environment variable in the `.env` file.
+2. Set the `LOGFIRE_API_KEY` environment variable in the `.env` file.
 
 ## AWS Integration
 
 ### S3 Storage
 
-Processed data is stored in S3 as Parquet files. The files are organized by timestamp:
+Processed data is stored in S3 as Parquet files. The implementation is in `streamprocessor/s3_exporter.py`. The files are organized by timestamp:
 
 ```
 s3://network-telemetry-data/processed/YYYY/MM/DD/HH/batch-id.parquet
@@ -207,7 +208,7 @@ s3://network-telemetry-data/processed/YYYY/MM/DD/HH/batch-id.parquet
 
 ### SNS Alerting
 
-Alerts are sent to SNS when errors occur in the pipeline. Configure the `AWS_SNS_TOPIC_ARN` environment variable to enable alerting.
+Alerts are sent to SNS when errors occur in the pipeline. The implementation is in `streamprocessor/alerts.py`. Configure the `AWS_SNS_TOPIC_ARN` environment variable to enable alerting.
 
 ## Development
 
@@ -215,17 +216,18 @@ Alerts are sent to SNS when errors occur in the pipeline. Configure the `AWS_SNS
 
 To add a new data source:
 
-1. Create a new simulator in the `src/simulator` directory
-2. Update the processor to handle the new data format
-3. Create new ClickHouse tables if needed
+1. Create a new simulator component or extend the existing one in the `simulator` directory
+2. Update the parser in `streamprocessor/parser.py` to handle the new data format
+3. Update the data models in `schema/models.py`
+4. Create new ClickHouse tables if needed in `schema/clickhouse_tables.py`
 
 ### Adding New Processing Logic
 
 To add new processing logic:
 
-1. Update the QuixStreams processor in `src/processor/processor.py`
+1. Update the QuixStreams processor in `streamprocessor/processor.py`
 2. Create new output topics in Kafka
-3. Add new ingestion logic for the new topics
+3. Add new storage adapters in the `processor/storage` directory
 
 ## Troubleshooting
 
@@ -234,13 +236,3 @@ To add new processing logic:
 - **Kafka Connection Errors**: Make sure Kafka is running and the `KAFKA_BOOTSTRAP_SERVERS` environment variable is set correctly.
 - **ClickHouse Connection Errors**: Check that ClickHouse is running and the connection parameters are correct.
 - **AWS Permission Errors**: Verify your AWS credentials and make sure the IAM user has the necessary permissions.
-
-### Checking Service Status
-
-```bash
-docker-compose ps
-```
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
