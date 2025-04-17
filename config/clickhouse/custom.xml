@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<clickhouse>
+    <!-- Network -->
+    <listen_host>0.0.0.0</listen_host>
+    
+    <!-- Limits -->
+    <max_memory_usage>8589934592</max_memory_usage>
+    <max_memory_usage_for_user>8589934592</max_memory_usage_for_user>
+    
+    <!-- Performance -->
+    <background_pool_size>16</background_pool_size>
+    
+    <!-- Logging -->
+    <logger>
+        <level>trace</level>
+        <console>1</console>
+    </logger>
+</clickhouse> 
