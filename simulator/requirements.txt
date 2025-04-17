@@ -1,0 +1,5 @@
+quixstreams
+python-dotenv>=0.21.0
+requests>=2.28.0
+pydantic>=2.0.0
+clickhouse-driver==0.2.5 

@@ -1,0 +1,486 @@
+[
+  {
+    "path": ".node.srl.interface.subinterface.ipv4.address",
+    "entries": [
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.0/31",
+          "interface_name": "ethernet-1/33",
+          "node_name": "srl-os",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.21/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.1/32",
+          "interface_name": "system0",
+          "node_name": "srl-os",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.2/31",
+          "interface_name": "ethernet-1/31",
+          "node_name": "srl-os-leaf2",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.23/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os-leaf2",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.3/32",
+          "interface_name": "system0",
+          "node_name": "srl-os-leaf2",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.3/31",
+          "interface_name": "ethernet-1/31",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.1/31",
+          "interface_name": "ethernet-1/33",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.22/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.2/32",
+          "interface_name": "system0",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      }
+    ]
+  },
+  {
+    "path": ".node.srl.interface.subinterface.ipv4.address",
+    "entries": [
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.0/31",
+          "interface_name": "ethernet-1/33",
+          "node_name": "srl-os",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.21/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.1/32",
+          "interface_name": "system0",
+          "node_name": "srl-os",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.2/31",
+          "interface_name": "ethernet-1/31",
+          "node_name": "srl-os-leaf2",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.23/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os-leaf2",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.3/32",
+          "interface_name": "system0",
+          "node_name": "srl-os-leaf2",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.3/31",
+          "interface_name": "ethernet-1/31",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.1/31",
+          "interface_name": "ethernet-1/33",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.22/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.2/32",
+          "interface_name": "system0",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      }
+    ]
+  },
+  {
+    "path": ".node.srl.interface.subinterface.ipv4.address",
+    "entries": [
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.0/31",
+          "interface_name": "ethernet-1/33",
+          "node_name": "srl-os",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.21/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.1/32",
+          "interface_name": "system0",
+          "node_name": "srl-os",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.2/31",
+          "interface_name": "ethernet-1/31",
+          "node_name": "srl-os-leaf2",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.23/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os-leaf2",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.3/32",
+          "interface_name": "system0",
+          "node_name": "srl-os-leaf2",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.3/31",
+          "interface_name": "ethernet-1/31",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "12.0.0.1/31",
+          "interface_name": "ethernet-1/33",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.22/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.2/32",
+          "interface_name": "system0",
+          "node_name": "srl-os-spine",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      }
+    ]
+  },
+  {
+    "path": ".node.srl.interface.status",
+    "entries": [
+      {
+        "keys": {
+          "interface_name": "ethernet-1/33",
+          "node_name": "srl-os"
+        },
+        "fields": {
+          "admin_status": "up",
+          "oper_status": "up"
+        }
+      },
+      {
+        "keys": {
+          "interface_name": "ethernet-1/31",
+          "node_name": "srl-os-leaf2"
+        },
+        "fields": {
+          "admin_status": "up",
+          "oper_status": "down"
+        }
+      },
+      {
+        "keys": {
+          "interface_name": "ethernet-1/31",
+          "node_name": "srl-os-spine"
+        },
+        "fields": {
+          "admin_status": "up",
+          "oper_status": "up"
+        }
+      }
+    ]
+  },
+  {
+    "path": ".node.srl.interface.subinterface.ipv4.address",
+    "entries": [
+      {
+        "keys": {
+          "address_ip-prefix": "192.168.1.1/24",
+          "interface_name": "ethernet-1/1",
+          "node_name": "srl-os-leaf3",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "172.16.29.24/24",
+          "interface_name": "mgmt0",
+          "node_name": "srl-os-leaf3",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "dhcp",
+          "status": "preferred"
+        }
+      },
+      {
+        "keys": {
+          "address_ip-prefix": "11.0.0.4/32",
+          "interface_name": "system0",
+          "node_name": "srl-os-leaf3",
+          "subinterface_index": "0"
+        },
+        "fields": {
+          "origin": "static",
+          "status": "preferred"
+        }
+      }
+    ]
+  },
+  {
+    "path": ".node.srl.interface.statistics",
+    "entries": [
+      {
+        "keys": {
+          "interface_name": "ethernet-1/33",
+          "node_name": "srl-os"
+        },
+        "fields": {
+          "in_packets": 1500,
+          "out_packets": 2000,
+          "in_octets": 150000,
+          "out_octets": 200000,
+          "in_errors": 0,
+          "out_errors": 0
+        }
+      },
+      {
+        "keys": {
+          "interface_name": "ethernet-1/31",
+          "node_name": "srl-os-leaf2"
+        },
+        "fields": {
+          "in_packets": 0,
+          "out_packets": 0,
+          "in_octets": 0,
+          "out_octets": 0,
+          "in_errors": 10,
+          "out_errors": 5
+        }
+      }
+    ]
+  }
+]
